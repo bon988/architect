@@ -1,0 +1,381 @@
+/* Images from Unsplash */
+/* Geometry icon icon by Icons8 */
+html, body{
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body{
+  font-family: 'Josefin Sans', sans-serif, 'Noto Serif JP', serif;
+  background: rgb(255, 255, 255);
+  color: #394247;
+}
+  
+p{
+  font-size: 16px;
+  color: #394247;
+}
+
+h3{
+  padding: 0px;
+  margin: 40px 20px 0px;
+  margin: 50px 0px 0px;
+}
+
+#navigation{
+  width: 100%;
+  height: 10vh;
+}
+
+#introduction{
+  height: 90vh;
+  margin: 200px 400px 0px;
+  text-align: center;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+/* Intro - FADA */
+#fada{
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  font-size: 80px;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* Intro - ARCHITECTS*/
+#architects{
+  text-transform: lowercase;
+  letter-spacing: 7px;
+  font-size: 50px;
+}
+
+/* Navbar */
+nav{
+  position: fixed;
+  z-index: 1;
+  width: 100%;
+  bottom: 0;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+nav ul{
+  background: white;
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  transition: 0.5s;
+  text-align: center;
+  float: center;
+  text-transform: uppercase;
+}
+
+nav ul li{
+  display: inline-block;
+  padding: 15px;
+}
+
+/* Navbar links */
+nav ul li a{
+  font-size: 17px;
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: 300;
+  color: #394247;
+}
+
+nav a:hover{
+  background-color: rgb(108, 124, 135);
+  color: rgb(233, 233, 233);
+  font-weight: bolder;
+  padding: 14px 16px;
+}
+
+/* Navbar dark transition */
+nav.dark ul{ 
+  background-color: rgb(108, 124, 135);
+  top: 0;
+  color: whitesmoke;
+  color: rgb(252, 252, 252); 
+  padding: 20px;
+  text-transform:lowercase;
+  font-size: x-small;
+  z-index: 1;
+}
+
+nav.dark ul li a{
+  font-size: 17px;
+  color: rgba(242, 242, 242, 0.886);
+  letter-spacing: 2px;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-weight: 300;
+}
+
+nav.dark a:hover{
+  background-color: #A9C3D4;;
+  color: rgb(233, 233, 233);
+  font-weight: bolder;
+  padding: 20px 16px;
+}
+
+#header-img{
+  margin: 0;
+  float: left;
+}
+
+#images{
+  width: 40%;
+  padding: 5px;
+}
+
+#title{
+  text-align: center;
+  font-family: "Noto Serif JP", serif;
+  margin: 50px 390px 0px;
+  padding: 50px 10px 0px;
+  letter-spacing: 2px;
+}
+
+/* PROJECTS */
+#projects-container{
+  display: flex;
+  flex-flow: row nowrap;
+  padding: 9px;
+  padding: 100px;
+  margin: 5px 0px 100px 0px;
+  background-color: rgb(108, 124, 135);
+  overflow: auto;
+  max-width: 1200px;
+}
+
+/* SERVICES*/
+#services_container{
+  padding: 5px 220px 100px;
+  margin: 50px 0px;
+  text-align: center;
+}
+
+/* TEAM */
+#team{
+  padding-top: 60px;
+  padding-bottom: 110px;
+   margin-bottom: 100px;
+  background-color: rgb(108, 124, 135);
+}
+
+#team #title{
+  color: rgb(233, 233, 233);
+}
+
+.team-container{
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 80px;
+  margin: 0px 120px;
+  padding: 110px 100px 5px;
+}
+
+#team_img {
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+}
+
+.teamname-container{
+  display: flex;
+  flex-direction: row;
+  flex-flow: row nowrap;
+  gap: 187px;
+  margin: 0px 100px;
+  padding: 0px 160px;
+  font-weight: bold;
+  font-family: 'Noto Serif JP', serif; 
+}
+
+.teamtitle-container{ 
+  display: flex;
+  flex-flow: row nowrap;
+  gap: 160px;
+  padding: 0px 80px;
+  margin: 0px 137px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.teamname-container p{ 
+  color: rgb(233, 233, 233);
+}
+
+.teamtitle-container p{ 
+  color: rgb(233, 233, 233);
+}
+
+#contact #title{
+  color: #58656E;
+}
+
+#contact-form{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  max-width: 600px;
+  margin: 0px 300px 50px 300px;
+  padding: 10px 120px;
+}
+
+input[type="text"], [type="email"]{
+  color:  #394247;
+  width: 100%; 
+  box-sizing: border-box; 
+  letter-spacing: 1px;
+}
+
+#nameform{
+  order: 1;
+  width: 45%;
+}
+
+#emailform{
+  order: 2;
+  width: 52.5%;
+}
+
+#subjectform{
+  order: 3;
+  width: 100%;
+} 
+
+#messageform{
+  order: 4;
+  max-width: 100%;
+  height: 150px;
+} 
+
+textarea{
+  height: 150px;
+  box-sizing: border-box;
+  width: 440px;
+  resize: none;
+}
+
+#submit-btn{
+  order: 5;
+  width: 100%;
+  padding: 10px;
+  color: rgb(233, 233, 233);
+  background-color: #58656E;
+  border: none;
+  border-radius: 2px;
+  margin: 2px;  
+  text-align: center;
+  font-size: medium;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#submit-btn:hover{
+  filter:brightness(120%);
+}
+
+.input-field{
+  border: 1px solid  #394247; 
+  padding: 7px 14px 9px; 
+  transition: 0.4s;
+  border-radius: 2px;
+}
+
+:focus{
+  outline: none;
+}
+
+.inputfield-animation{
+  position: relative;
+}
+.input-field ~ .focus-border:before,
+.input-field ~ .focus-border:after{
+  content: ""; 
+  position: absolute; 
+  top: 0; 
+  left: 50%; 
+  width: 0; 
+  height: 2px; 
+  background-color: #A9C3D4;
+  transition: 0.4s;
+}
+
+.input-field ~ .focus-border:after{
+  top: auto; 
+  bottom: 0;
+}
+
+.input-field ~ .focus-border i:before,
+.input-field ~ .focus-border i:after{
+  content: ""; 
+  position: absolute; 
+  top: 50%; 
+  left: 0; 
+  width: 2px; 
+  height: 0; 
+  background-color: #A9C3D4; 
+  transition: 0.6s;
+}
+
+.input-field ~ .focus-border i:after{
+  left: auto; 
+  right: 0;
+}
+
+.input-field:focus ~ .focus-border:before,
+.input-field:focus ~ .focus-border:after{
+  left: 0; 
+  width: 100%; 
+  transition: 0.4s;
+}
+
+.input-field:focus ~ .focus-border i:before,
+.input-field:focus ~ .focus-border i:after{
+  top: 0; 
+  height: 100%; 
+  transition: 0.6s;
+}
+
+/* FOOTER */
+footer{
+  background-color: rgb(108, 124, 135);
+  color: rgb(233, 233, 233);
+  padding: 30px 70px 150px;
+  margin: 100px 0px 0px;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#contactfooter{
+  float: left;
+}
+
+#rightfooter{
+  float: right;
+}
+
+footer ul{
+  list-style-type: none;
+}
+
+footer li{
+  display: inline;
+  text-align: center;
+}
+
+footer p{
+  color: rgb(233, 233, 233);
+}
+
+/* MEDIA QUERIES */
+@media screen and ( max-width: 1024px ) {
+}
+  
+@media screen and (max-width: 600px) { 
+  
+}
