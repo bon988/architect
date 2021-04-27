@@ -1,50 +1,50 @@
 /* Images from Unsplash */
 /* Geometry icon icon by Icons8 */
-html, body{
+html, body {
   margin: 0;
   padding: 0;
   width: 100%;
 }
 
-body{
+body {
   font-family: 'Josefin Sans', sans-serif, 'Noto Serif JP', serif;
   background: rgb(255, 255, 255);
   color: #394247;
 }
   
-p{
+p {
   font-size: 16px;
   color: #394247;
 }
 
-h3{
+h3 {
   padding: 0px;
   margin: 40px 20px 0px;
   margin: 50px 0px 0px;
 }
 
-#navigation{
+#navigation {
   width: 100%;
 }
 
-#introduction{
+#introduction {
   background-color: rgb(108, 124, 135); 
+  color: rgb(255, 255, 255);
   height: 50vh;
   padding: 200px 0px;
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
-  color: rgb(255, 255, 255);
 }
 
 /* Intro - FADA */
-#fada{
+#fada {
   text-transform: capitalize;
   letter-spacing: 2px;
   font-size: 80px;
   font-family: 'Noto Serif JP', serif;
 }
 
-/* Intro - ARCHITECTS*/
+/* Intro - ARCHITECTS */
 #architects{
   text-transform: lowercase;
   letter-spacing: 7px;
@@ -52,7 +52,7 @@ h3{
 }
 
 /* Navbar */
-nav{
+nav {
   position: fixed;
   z-index: 1;
   width: 100%;
@@ -60,7 +60,7 @@ nav{
   font-family: 'Josefin Sans', sans-serif;
 }
 
-nav ul{
+nav ul {
   overflow: hidden;
   list-style: none;
   padding: 0;
@@ -71,13 +71,13 @@ nav ul{
   text-transform: uppercase;
 }
 
-nav ul li{
+nav ul li {
   display: inline-block;
   padding: 15px;
 }
 
 /* Navbar links */
-nav ul li a{
+nav ul li a {
   font-size: 17px;
   letter-spacing: 2px;
   text-align: center;
@@ -87,14 +87,14 @@ nav ul li a{
   color: rgb(255, 255, 255);
 }
 
-nav a:hover{
+nav a:hover {
   color: #394247;
   font-weight: bolder;
   padding: 14px 16px;
 }
 
 /* Navbar light transition */
-nav.light ul{ 
+nav.light ul { 
   background: rgb(255, 255, 255);
   top: 0;
   color: #394247;
@@ -104,7 +104,7 @@ nav.light ul{
   z-index: 1;
 }
 
-nav.light ul li a{
+nav.light ul li a {
   font-size: 17px;
   color: #394247;
   letter-spacing: 2px;
@@ -114,24 +114,25 @@ nav.light ul li a{
   font-weight: 300;
 }
 
-nav.light a:hover{
+nav.light a:hover {
   background-color: rgb(108, 124, 135); 
   color: rgb(255, 255, 255);
   font-weight: bolder;
   padding: 20px 16px;
 }
 
-#header-img{
+#header-img {
   margin: 0;
   float: left;
 }
 
-#images{
+#images {
   width: 40%;
   padding: 5px;
 }
 
-#title{
+#title {
+  color: #58656E;
   text-align: center;
   font-family: "Noto Serif JP", serif;
   margin: 50px 390px 0px;
@@ -140,7 +141,7 @@ nav.light a:hover{
 }
 
 /* PROJECTS */
-#projects-container{
+#projects-container {
   display: flex;
   flex-flow: row nowrap;
   gap: 50px;
@@ -151,19 +152,19 @@ nav.light a:hover{
 }
 
 /* SERVICES*/
-#services_container{
+#services_container {
   padding: 5px 220px 100px;
   margin: 0px 0px;
   text-align: center;
 }
 
 /* TEAM */
-#team{
+#team {
   padding: 60px 0px 110px;
   margin-bottom: 100px;
 }
 
-.team-container{
+.team-container {
   display: flex;
   flex-flow: row nowrap;
   gap: 75px;
@@ -177,7 +178,7 @@ nav.light a:hover{
   height: 150px;
 }
 
-.teamname-container{
+.teamname-container {
   display: flex;
   flex-flow: row nowrap;
   gap: 187px;
@@ -187,7 +188,7 @@ nav.light a:hover{
   font-family: 'Noto Serif JP', serif; 
 }
 
-.teamtitle-container{ 
+.teamtitle-container { 
   display: flex;
   flex-flow: row nowrap;
   gap: 160px;
@@ -196,11 +197,7 @@ nav.light a:hover{
   font-family: 'Josefin Sans', sans-serif;
 }
 
-#contact #title{
-  color: #58656E;
-}
-
-#contact-form{
+#contact-form {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -209,63 +206,63 @@ nav.light a:hover{
   padding: 10px 120px;
 }
 
-input[type="text"], [type="email"]{
+input[type="text"], [type="email"] {
   color: #394247;
   width: 100%; 
   box-sizing: border-box; 
   letter-spacing: 1px;
 }
 
-#nameform{
+#nameform {
   order: 1;
   width: 45%;
 }
 
-#emailform{
+#emailform {
   order: 2;
   width: 52.2%;
 }
 
-#subjectform{
+#subjectform {
   order: 3;
   width: 100%;
 } 
 
-#messageform{
+#messageform {
   order: 4;
   max-width: 100%;
   height: 150px;
 } 
 
-#subjectform{
+#subjectform {
   width: 438px;
 }
 
-textarea{
+textarea {
   height: 150px;
   box-sizing: border-box;
   width: 438px;
   resize: none;
 }
 
-.input-field{
+.input-field {
   border: 1px solid  #394247; 
   padding: 7px 14px 9px; 
   transition: 0.4s;
   border-radius: 2px;
 }
 
-:focus{
+:focus {
   outline: none;
 }
 
 /*  inputfield Animation */
-.inputfield-animation{
+.inputfield-animation {
   position: relative;
 }
 
 .input-field ~ .focus-border:before,
-.input-field ~ .focus-border:after{
+.input-field ~ .focus-border:after {
   content: ""; 
   position: absolute; 
   top: 0; 
@@ -276,13 +273,13 @@ textarea{
   transition: 0.4s;
 }
 
-.input-field ~ .focus-border:after{
+.input-field ~ .focus-border:after {
   top: auto; 
   bottom: 0;
 }
 
 .input-field ~ .focus-border i:before,
-.input-field ~ .focus-border i:after{
+.input-field ~ .focus-border i:after {
   content: ""; 
   position: absolute; 
   top: 50%; 
@@ -293,26 +290,26 @@ textarea{
   transition: 0.6s;
 }
 
-.input-field ~ .focus-border i:after{
+.input-field ~ .focus-border i:after {
   left: auto; 
   right: 0;
 }
 
 .input-field:focus ~ .focus-border:before,
-.input-field:focus ~ .focus-border:after{
+.input-field:focus ~ .focus-border:after {
   left: 0; 
   width: 100%; 
   transition: 0.4s;
 }
 
 .input-field:focus ~ .focus-border i:before,
-.input-field:focus ~ .focus-border i:after{
+.input-field:focus ~ .focus-border i:after {
   top: 0; 
   height: 100%; 
   transition: 0.6s;
 }
 
-#submit-btn{
+#submit-btn {
   order: 5;
   width: 100%;
   padding: 10px;
@@ -326,12 +323,12 @@ textarea{
   font-family: 'Josefin Sans', sans-serif;
 }
 
-#submit-btn:hover{
+#submit-btn:hover {
   filter:brightness(120%);
 }
 
 /* FOOTER */
-footer{
+footer {
   background-color: rgb(108, 124, 135);
   color: rgb(233, 233, 233);
   padding: 30px 70px 200px;
@@ -339,66 +336,66 @@ footer{
   font-family: 'Josefin Sans', sans-serif;
 }
 
-#contactfooter{
+#contactfooter {
   float: left;
 }
 
-#rightfooter{
+#rightfooter {
   float: right;
 }
 
-footer ul{
+footer ul {
   list-style-type: none;
 }
 
-footer li{
+footer li {
   display: inline;
   text-align: center;
 }
 
-footer p{
+footer p {
   color: rgb(233, 233, 233);
 }
 
 /* MEDIA QUERIES */
 /* iPhone  */
-@media all and (max-width: 376px) and (max-width: 812px){
-  nav ul{
+@media all and (max-width: 376px) and (max-width: 812px) {
+  nav ul {
     padding: 5px;
   }
 
-  nav ul li{
+  nav ul li {
     display: inline-block;
     padding: 5px;
   }
   
-  nav ul li a{
+  nav ul li a {
     padding: 0px;
   }
 
-  nav a:hover{
+  nav a:hover {
     padding: 5px 16px;
   }
   
-  nav.light ul{
+  nav.light ul {
     padding: 0px;
   }
 
-  nav.light ul li a{
+  nav.light ul li a {
     padding: 0px;
   }
 
-  nav.light a:hover{
+  nav.light a:hover {
     padding: 5px 16px;
   }
 
-  #introduction{
+  #introduction {
     height: 20vh;
     margin: 0px;
     padding: 100px 0px;
   }
 
-  #projects-container{
+  #projects-container {
     background-color: rgb(108, 124, 135); 
     max-width: 376px;
     margin: 5px 0px 0px;
@@ -407,66 +404,66 @@ footer p{
     padding: 0px 40px 155px;
   }
 
-  #images{
+  #images {
     width: 100%;
     padding: 0px 15px;
   }
 
-  #title{
+  #title {
     margin: 80px 30px 0px;
     padding: 0px 10px;
     letter-spacing: 2px;
   }
 
-  #services_container{
+  #services_container {
     padding: 0px 40px;
     margin: 50px 0px;
   }
 
-  #team{
+  #team {
     padding: 0px;
     margin-bottom: 50px;
   }
 
-  .team-container{
+  .team-container {
     gap: 20px;
     margin: 0px 5px;
     padding: 40px 10px 0px;
   }
 
-  #team_img{
+  #team_img {
     width: 70px;
     height: 70px;
   }
 
-  .teamname-container{
+  .teamname-container {
     gap: 55px;
     margin: 0px 15px;
     padding: 0px;
   }
 
-  .teamtitle-container{
+  .teamtitle-container {
     gap: 30px;
     padding: 0px 0px;
     margin: 0px 20px;
   }
 
-  #contact-form{
+  #contact-form {
     gap: 5px;
     max-width: 600px;
     margin: 5px 30px 80px;
     padding: 10px 30px;
   }
 
-  #subjectform{
+  #subjectform {
     width: 253px;
   }
 
-  textarea{
+  textarea {
     width: 252.5px;
   }
 
-  footer{
+  footer {
     padding: 30px 70px 250px;
     margin: 20px 0px;
   }
@@ -476,42 +473,42 @@ footer p{
 @media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px)  { 
-  nav ul{
+  nav ul {
     padding: 5px;
   }
 
-  nav ul li{
+  nav ul li {
     display: inline-block;
     padding: 5px;
   }
   
-  nav ul li a{
+  nav ul li a {
     padding: 0px;
   }
 
-  nav a:hover{
+  nav a:hover {
     padding: 5px 16px;
   }
   
-  nav.light ul{
+  nav.light ul {
     padding: 0px;
   }
 
-  nav.light ul li a{
+  nav.light ul li a {
     padding: 0px;
   }
 
-  nav.light a:hover{
+  nav.light a:hover {
     padding: 5px 16px;
   }
 
-  #introduction{
+  #introduction {
     height: 20vh;
     margin: 0px;
     padding: 110px 0px;
   }
 
-  #projects-container{
+  #projects-container {
     background-color: rgb(108, 124, 135); 
     max-width: 376px;
     margin: 5px 0px 0px;
@@ -520,70 +517,70 @@ and (max-device-width : 1024px)  {
     padding: 0px 40px 120px;
   }
 
-  #images{
+  #images {
     width: 70%;
     padding: 0px 15px;
   }
 
-  #title{
+  #title {
     margin: 170px 30px 0px;
     padding: 0px 10px;
     letter-spacing: 2px;
   }
 
-  #services_container{
+  #services_container {
     padding: 0px 100px 50px;
     margin: 50px 0px;
   }
 
-  #team{
+  #team {
     padding: 0px;
     margin-bottom: 50px;
   }
 
-  .team-container{
+  .team-container {
     gap: 55px;
     margin: 0px 20px;
     padding: 40px 42px 0px;
   }
 
-  #team_img{
+  #team_img {
     width: 120px;
     height: 120px;
   }
 
-  .teamname-container{
+  .teamname-container {
     gap: 138px;
     margin: 0px 20px;
     padding: 5px 70px 0px;
   }
 
-  .teamtitle-container{
+  .teamtitle-container {
     gap: 100px;
     margin: 0px 20px;
     padding: 5px 30px 0px;
   }
 
-  #contact-form{
+  #contact-form {
     gap: 5px;
     max-width: 550px;
     margin: 5px 50px 80px;
     padding: 10px 90px;
   }
 
-  #emailform{
+  #emailform {
     width: 261px;
   }
 
-  #subjectform{
+  #subjectform {
     width: 486px;
   }
 
-  textarea{
+  textarea {
     width: 486px;
   }
 
-  footer{
+  footer {
     padding: 30px 70px 250px;
     margin: 20px 0px;
   }

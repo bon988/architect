@@ -1,4 +1,4 @@
-// darken navigation on scroll 
+// lighten navigation on scroll 
 $(window).scroll(function(){
     if($(window).scrollTop()){
         $("nav").addClass("light");
