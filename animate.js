@@ -1,10 +1,10 @@
 // darken navigation on scroll 
 $(window).scroll(function(){
     if($(window).scrollTop()){
-        $("nav").addClass("dark");
+        $("nav").addClass("light");
     }
     else{
-        $("nav").removeClass("dark");
+        $("nav").removeClass("light");
     }
 });
 

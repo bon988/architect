@@ -25,14 +25,15 @@ h3{
 
 #navigation{
   width: 100%;
-  height: 10vh;
 }
 
 #introduction{
-  height: 90vh;
-  margin: 200px 400px 0px;
+  background-color: rgb(108, 124, 135); 
+  height: 50vh;
+  padding: 200px 0px;
   text-align: center;
   font-family: 'Josefin Sans', sans-serif;
+  color: rgb(255, 255, 255);
 }
 
 /* Intro - FADA */
@@ -60,7 +61,6 @@ nav{
 }
 
 nav ul{
-  background: white;
   overflow: hidden;
   list-style: none;
   padding: 0;
@@ -84,31 +84,29 @@ nav ul li a{
   padding: 14px 16px;
   text-decoration: none;
   font-weight: 300;
-  color: #394247;
+  color: rgb(255, 255, 255);
 }
 
 nav a:hover{
-  background-color: rgb(108, 124, 135);
-  color: rgb(233, 233, 233);
+  color: #394247;
   font-weight: bolder;
   padding: 14px 16px;
 }
 
-/* Navbar dark transition */
-nav.dark ul{ 
-  background-color: rgb(108, 124, 135);
+/* Navbar light transition */
+nav.light ul{ 
+  background: rgb(255, 255, 255);
   top: 0;
-  color: whitesmoke;
-  color: rgb(252, 252, 252); 
-  padding: 20px;
+  color: #394247;
+  padding: 5px 15px;
   text-transform:lowercase;
   font-size: x-small;
   z-index: 1;
 }
 
-nav.dark ul li a{
+nav.light ul li a{
   font-size: 17px;
-  color: rgba(242, 242, 242, 0.886);
+  color: #394247;
   letter-spacing: 2px;
   text-align: center;
   padding: 14px 16px;
@@ -116,9 +114,9 @@ nav.dark ul li a{
   font-weight: 300;
 }
 
-nav.dark a:hover{
-  background-color: #A9C3D4;;
-  color: rgb(233, 233, 233);
+nav.light a:hover{
+  background-color: rgb(108, 124, 135); 
+  color: rgb(255, 255, 255);
   font-weight: bolder;
   padding: 20px 16px;
 }
@@ -145,10 +143,9 @@ nav.dark a:hover{
 #projects-container{
   display: flex;
   flex-flow: row nowrap;
-  padding: 9px;
-  padding: 100px;
-  margin: 5px 0px 100px 0px;
-  background-color: rgb(108, 124, 135);
+  gap: 50px;
+  padding: 100px 100px 4px 0px;
+  margin: 0px 0px 100px 0px;
   overflow: auto;
   max-width: 1200px;
 }
@@ -156,26 +153,20 @@ nav.dark a:hover{
 /* SERVICES*/
 #services_container{
   padding: 5px 220px 100px;
-  margin: 50px 0px;
+  margin: 0px 0px;
   text-align: center;
 }
 
 /* TEAM */
 #team{
-  padding-top: 60px;
-  padding-bottom: 110px;
-   margin-bottom: 100px;
-  background-color: rgb(108, 124, 135);
-}
-
-#team #title{
-  color: rgb(233, 233, 233);
+  padding: 60px 0px 110px;
+  margin-bottom: 100px;
 }
 
 .team-container{
   display: flex;
   flex-flow: row nowrap;
-  gap: 80px;
+  gap: 75px;
   margin: 0px 120px;
   padding: 110px 100px 5px;
 }
@@ -188,7 +179,6 @@ nav.dark a:hover{
 
 .teamname-container{
   display: flex;
-  flex-direction: row;
   flex-flow: row nowrap;
   gap: 187px;
   margin: 0px 100px;
@@ -206,14 +196,6 @@ nav.dark a:hover{
   font-family: 'Josefin Sans', sans-serif;
 }
 
-.teamname-container p{ 
-  color: rgb(233, 233, 233);
-}
-
-.teamtitle-container p{ 
-  color: rgb(233, 233, 233);
-}
-
 #contact #title{
   color: #58656E;
 }
@@ -228,7 +210,7 @@ nav.dark a:hover{
 }
 
 input[type="text"], [type="email"]{
-  color:  #394247;
+  color: #394247;
   width: 100%; 
   box-sizing: border-box; 
   letter-spacing: 1px;
@@ -241,7 +223,7 @@ input[type="text"], [type="email"]{
 
 #emailform{
   order: 2;
-  width: 52.5%;
+  width: 52.2%;
 }
 
 #subjectform{
@@ -255,29 +237,15 @@ input[type="text"], [type="email"]{
   height: 150px;
 } 
 
+#subjectform{
+  width: 438px;
+}
+
 textarea{
   height: 150px;
   box-sizing: border-box;
-  width: 440px;
+  width: 438px;
   resize: none;
-}
-
-#submit-btn{
-  order: 5;
-  width: 100%;
-  padding: 10px;
-  color: rgb(233, 233, 233);
-  background-color: #58656E;
-  border: none;
-  border-radius: 2px;
-  margin: 2px;  
-  text-align: center;
-  font-size: medium;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-#submit-btn:hover{
-  filter:brightness(120%);
 }
 
 .input-field{
@@ -291,6 +259,7 @@ textarea{
   outline: none;
 }
 
+/*  inputfield Animation */
 .inputfield-animation{
   position: relative;
 }
@@ -343,12 +312,30 @@ textarea{
   transition: 0.6s;
 }
 
+#submit-btn{
+  order: 5;
+  width: 100%;
+  padding: 10px;
+  color: rgb(233, 233, 233);
+  background-color: #58656E;
+  border: none;
+  border-radius: 2px;
+  margin: 2px;  
+  text-align: center;
+  font-size: medium;
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+#submit-btn:hover{
+  filter:brightness(120%);
+}
+
 /* FOOTER */
 footer{
   background-color: rgb(108, 124, 135);
   color: rgb(233, 233, 233);
-  padding: 30px 70px 150px;
-  margin: 100px 0px 0px;
+  padding: 30px 70px 200px;
+  margin: 190px 0px 0px;
   font-family: 'Josefin Sans', sans-serif;
 }
 
@@ -371,4 +358,233 @@ footer li{
 
 footer p{
   color: rgb(233, 233, 233);
+}
+
+/* MEDIA QUERIES */
+/* iPhone  */
+@media all and (max-width: 376px) and (max-width: 812px){
+  nav ul{
+    padding: 5px;
+  }
+
+  nav ul li{
+    display: inline-block;
+    padding: 5px;
+  }
+  
+  nav ul li a{
+    padding: 0px;
+  }
+
+  nav a:hover{
+    padding: 5px 16px;
+  }
+  
+  nav.light ul{
+    padding: 0px;
+  }
+
+  nav.light ul li a{
+    padding: 0px;
+  }
+
+  nav.light a:hover{
+    padding: 5px 16px;
+  }
+
+  #introduction{
+    height: 20vh;
+    margin: 0px;
+    padding: 100px 0px;
+  }
+
+  #projects-container{
+    background-color: rgb(108, 124, 135); 
+    max-width: 376px;
+    margin: 5px 0px 0px;
+    max-width: 376px;
+    margin: 0px 0px;
+    padding: 0px 40px 155px;
+  }
+
+  #images{
+    width: 100%;
+    padding: 0px 15px;
+  }
+
+  #title{
+    margin: 80px 30px 0px;
+    padding: 0px 10px;
+    letter-spacing: 2px;
+  }
+
+  #services_container{
+    padding: 0px 40px;
+    margin: 50px 0px;
+  }
+
+  #team{
+    padding: 0px;
+    margin-bottom: 50px;
+  }
+
+  .team-container{
+    gap: 20px;
+    margin: 0px 5px;
+    padding: 40px 10px 0px;
+  }
+
+  #team_img{
+    width: 70px;
+    height: 70px;
+  }
+
+  .teamname-container{
+    gap: 55px;
+    margin: 0px 15px;
+    padding: 0px;
+  }
+
+  .teamtitle-container{
+    gap: 30px;
+    padding: 0px 0px;
+    margin: 0px 20px;
+  }
+
+  #contact-form{
+    gap: 5px;
+    max-width: 600px;
+    margin: 5px 30px 80px;
+    padding: 10px 30px;
+  }
+
+  #subjectform{
+    width: 253px;
+  }
+
+  textarea{
+    width: 252.5px;
+  }
+
+  footer{
+    padding: 30px 70px 250px;
+    margin: 20px 0px;
+  }
+}
+
+/* iPad in portrait & landscape */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px)  { 
+  nav ul{
+    padding: 5px;
+  }
+
+  nav ul li{
+    display: inline-block;
+    padding: 5px;
+  }
+  
+  nav ul li a{
+    padding: 0px;
+  }
+
+  nav a:hover{
+    padding: 5px 16px;
+  }
+  
+  nav.light ul{
+    padding: 0px;
+  }
+
+  nav.light ul li a{
+    padding: 0px;
+  }
+
+  nav.light a:hover{
+    padding: 5px 16px;
+  }
+
+  #introduction{
+    height: 20vh;
+    margin: 0px;
+    padding: 110px 0px;
+  }
+
+  #projects-container{
+    background-color: rgb(108, 124, 135); 
+    max-width: 376px;
+    margin: 5px 0px 0px;
+    max-width: 768px;
+    margin: 0px 0px;
+    padding: 0px 40px 120px;
+  }
+
+  #images{
+    width: 70%;
+    padding: 0px 15px;
+  }
+
+  #title{
+    margin: 170px 30px 0px;
+    padding: 0px 10px;
+    letter-spacing: 2px;
+  }
+
+  #services_container{
+    padding: 0px 100px 50px;
+    margin: 50px 0px;
+  }
+
+  #team{
+    padding: 0px;
+    margin-bottom: 50px;
+  }
+
+  .team-container{
+    gap: 55px;
+    margin: 0px 20px;
+    padding: 40px 42px 0px;
+  }
+
+  #team_img{
+    width: 120px;
+    height: 120px;
+  }
+
+  .teamname-container{
+    gap: 138px;
+    margin: 0px 20px;
+    padding: 5px 70px 0px;
+  }
+
+  .teamtitle-container{
+    gap: 100px;
+    margin: 0px 20px;
+    padding: 5px 30px 0px;
+  }
+
+  #contact-form{
+    gap: 5px;
+    max-width: 550px;
+    margin: 5px 50px 80px;
+    padding: 10px 90px;
+  }
+
+  #emailform{
+    width: 261px;
+  }
+
+  #subjectform{
+    width: 486px;
+  }
+
+  textarea{
+    width: 486px;
+  }
+
+  footer{
+    padding: 30px 70px 250px;
+    margin: 20px 0px;
+  }
 }
