@@ -147,7 +147,7 @@ nav.light a:hover {
   max-width: 1200px;
 }
 
-#project-image {
+#images {
   width: 40%;
 }
 
@@ -395,7 +395,7 @@ footer p {
     padding: 100px 0px;
   }
 
-  #project-image{
+  #images{
     height: auto;
   }
 
@@ -517,10 +517,10 @@ and (max-device-width : 1024px)  {
     padding: 115px 40px 210px;
   }
 
-  #project-image{
+  #images{
     height: auto;
   }
-  
+
   #title {
     margin: 170px 30px 0px;
     padding: 0px 10px;
