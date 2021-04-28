@@ -147,9 +147,8 @@ nav.light a:hover {
   max-width: 1200px;
 }
 
-#images {
+#project-image {
   width: 40%;
-  padding: 5px;
 }
 
 /* SERVICES*/
@@ -396,6 +395,10 @@ footer p {
     padding: 100px 0px;
   }
 
+  #project-image{
+    height: auto;
+  }
+
   #projects-container {
     background-color: rgb(108, 124, 135); 
     max-width: 376px;
@@ -403,7 +406,7 @@ footer p {
     margin: 5px 0px 0px;
     max-width: 376px;
     margin: 0px 0px;
-    padding: 101px 40px 220px;
+    padding: 101px 40px 230px;
   }
 
   #title {
@@ -511,9 +514,13 @@ and (max-device-width : 1024px)  {
     margin: 5px 0px 0px;
     max-width: 768px;
     margin: 0px 0px;
-    padding: 115px 40px 200px;
+    padding: 115px 40px 210px;
   }
 
+  #project-image{
+    height: auto;
+  }
+  
   #title {
     margin: 170px 30px 0px;
     padding: 0px 10px;
