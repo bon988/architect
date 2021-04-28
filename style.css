@@ -126,11 +126,6 @@ nav.light a:hover {
   float: left;
 }
 
-#images {
-  width: 40%;
-  padding: 5px;
-}
-
 #title {
   color: #58656E;
   text-align: center;
@@ -141,6 +136,7 @@ nav.light a:hover {
 }
 
 /* PROJECTS */
+
 #projects-container {
   display: flex;
   flex-flow: row nowrap;
@@ -149,6 +145,11 @@ nav.light a:hover {
   margin: 0px 0px 100px 0px;
   overflow: auto;
   max-width: 1200px;
+}
+
+#images {
+  width: 40%;
+  padding: 5px;
 }
 
 /* SERVICES*/
@@ -398,15 +399,11 @@ footer p {
   #projects-container {
     background-color: rgb(108, 124, 135); 
     max-width: 376px;
+    gap: 15px;
     margin: 5px 0px 0px;
     max-width: 376px;
     margin: 0px 0px;
-    padding: 0px 40px 155px;
-  }
-
-  #images {
-    width: 100%;
-    padding: 0px 15px;
+    padding: 101px 40px 220px;
   }
 
   #title {
@@ -514,12 +511,7 @@ and (max-device-width : 1024px)  {
     margin: 5px 0px 0px;
     max-width: 768px;
     margin: 0px 0px;
-    padding: 0px 40px 120px;
-  }
-
-  #images {
-    width: 70%;
-    padding: 0px 15px;
+    padding: 115px 40px 200px;
   }
 
   #title {
