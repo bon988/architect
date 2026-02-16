@@ -1,586 +1,801 @@
-/* Images from Unsplash */
-/* Geometry icon icon by Icons8 */
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
+/* =========================================================
+  SITE STYLES — CLEAN & RESPONSIVE 
+  ========================================================= */
+/* --- Reset / Base --- */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 100%; }
+
+html { 
+  font-size: clamp(14px, 0.9vw + 10px, 18px); 
 }
 
-body {
-  font-family: 'Josefin Sans', sans-serif, 'Noto Serif JP', serif;
-  background: rgb(255, 255, 255);
-  color: #394247;
-}
-  
-p {
-  font-size: 16px;
-  color: #394247;
-}
-
-h3 {
-  padding: 0px;
-  margin: 40px 20px 0px;
-  margin: 50px 0px 0px;
-}
-
-#navigation {
-  width: 100%;
-}
-
-#introduction {
-  background-color: rgb(108, 124, 135); 
-  color: rgb(255, 255, 255);
-  height: 50vh;
-  padding: 200px 0px;
-  text-align: center;
+body{
   font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;  
+  color: #394247;
+  line-height: 1.55;
 }
 
-/* Intro - FADA */
-#fada {
-  text-transform: capitalize;
-  letter-spacing: 2px;
-  font-size: 80px;
-  font-family: 'Noto Serif JP', serif;
+h1, h2, h3 { line-height: 1.15; }
+p, li, input, textarea { line-height: 1.6; }
+
+/* Fluid sizes (you had these; keep or refine slightly) */
+h1 { font-size: clamp(28px, 3.6vw, 56px); }
+h2 { font-size: clamp(22px, 2.6vw, 36px); }
+h3 { font-size: clamp(18px, 2vw, 28px); margin: clamp(20px, 3.5vw, 40px) 0 0; }
+p  { font-size: clamp(14px, 1.05vw, 18px); }
+
+/* Optional: a readable max width for long text blocks */
+.prose, .text-block { max-width: var(--measure); }
+
+/* --- Design tokens --- */
+:root{
+/* Left edge */
+--edge: clamp(16px, 4vw, 40px);        /* global content gutter */
+--measure: 68ch;                       /* comfy max text width */
+ 
+  /* Cursor */
+ --cursor-size: 10px;
+ --cursor-hover-size: 26px;
+ --cursor-click-scale: 0.85;
+ --cursor-color: 20,20,20;
+
+ /* Cursor Lens */
+ --lens-size: 120px;
+ --lens-zoom: 2.0;
+ --ring-width: 2px;
+
+ /* Form accents */
+ --input-highlight: #A9C3D4;
+ --input-highlight-strong: rgb(108,124,135);
 }
 
-/* Intro - ARCHITECTS */
-#architects{
-  text-transform: lowercase;
-  letter-spacing: 7px;
-  font-size: 50px;
+/* START OF OVERLAP STYLING */
+/* ===== Overlap panels (projects, services, team, contact) ===== */
+.overlap-panel{
+ position: sticky;
+ top: 0;                       /* sticks to the top until next panel arrives */
+ z-index: 1;                   /* JS will boost later panels above earlier ones */
+ /* allow children to cast shadows without clipping */
+ isolation: isolate;
+ padding-bottom: var(--overlap-tail, 18vh); /* <— tail space */
 }
 
-/* Navbar */
+/* Last panel doesn’t need tail */
+.overlap-panel:last-of-type{
+ --overlap-tail: 0;
+}
+
+#services.overlap-panel{
+ --overlap-tail: 30vh;
+}
+
+/* Visual card container inside each panel */
+.overlap-card{
+ background: #fff;           
+ border-radius: 24px;
+ box-shadow: 0 14px 40px rgba(0,0,0,.10);
+ width: min(1100px, 92vw);
+ transition: box-shadow .25s ease, transform .25s ease, background-color .25s ease;
+  --card-pad: clamp(16px, 2.5vw, 32px);
+  padding: var(--card-pad);
+}
+
+/* Slight lift when a panel is the top-most in the stack */
+.overlap-panel.is-top .overlap-card{
+ box-shadow: 0 22px 60px rgba(0,0,0,.16);
+ transform: translateY(-2px);
+}
+
+/* Give each section its native feel */
+#projects .overlap-card{ background: #f0f0f0; }             
+#services .overlap-card{ background: #ffffff; }
+#team .overlap-card{ background: #f0f0f0; }
+#contact .overlap-card{ background: #f0f0f0; }
+
+/* If your section already has internal padding, reduce double-padding as needed */
+#services_container, #team .team-container,
+#contact .contact-container{
+ padding-top: clamp(8px, 1.5vw, 16px);
+ padding-bottom: clamp(8px, 2vw, 24px);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+ .overlap-card{ transition: none; }
+}
+
+/* =========================================================
+  NAVBAR (fixed bottom with safe-area)
+  ========================================================= */
+#navigation { width: 100%; }
 nav {
-  position: fixed;
-  z-index: 1;
-  width: 100%;
-  bottom: 0;
-  font-family: 'Josefin Sans', sans-serif;
+ position: fixed;
+ z-index: 1000;
+ width: 100%;
+ bottom: 0;
+ padding-bottom: env(safe-area-inset-bottom, 0);
+ font-family: 'Josefin Sans', sans-serif;
 }
-
 nav ul {
-  overflow: hidden;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  transition: 0.5s;
-  text-align: center;
-  float: center;
-  text-transform: uppercase;
+ list-style: none; margin: 0; padding: 0;
+ text-align: center; transition: .5s;
+}
+nav ul li { 
+  display: inline-block; 
+  padding: 15px; 
 }
 
-nav ul li {
-  display: inline-block;
-  padding: 15px;
-}
-
-/* Navbar links */
 nav ul li a {
-  font-size: 17px;
-  letter-spacing: 2px;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-weight: 300;
-  color: rgb(255, 255, 255);
+ font-family: 'Josefin Sans', sans-serif;
+ font-weight: 300;   
+ display: inline-block;
+ font-size: 17px; 
+ letter-spacing: 2px; 
+ text-decoration: none;
+ color: #fff; 
+ padding: 14px 16px;
+}
+ 
+nav a:hover { 
+  color: #394247; 
+  font-weight: 600; 
 }
 
-nav a:hover {
-  color: #394247;
-  font-weight: bolder;
-  padding: 14px 16px;
+nav.light ul {
+ background: #fff; 
+ color: #394247; 
+ padding: 5px 15px; 
+ text-transform: lowercase;
 }
 
-/* Navbar light transition */
-nav.light ul { 
-  background: rgb(255, 255, 255);
-  top: 0;
+nav.light ul li a { 
   color: #394247;
-  padding: 5px 15px;
-  text-transform:lowercase;
-  font-size: x-small;
-  z-index: 1;
-}
-
-nav.light ul li a {
-  font-size: 17px;
-  color: #394247;
-  letter-spacing: 2px;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-weight: 300;
+  letter-spacing: 1px; 
 }
 
 nav.light a:hover {
-  background-color: rgb(108, 124, 135); 
-  color: rgb(255, 255, 255);
-  font-weight: bolder;
-  padding: 20px 16px;
+ background: rgb(108,124,135); 
+ color: #fff; 
+ font-weight: 700;
+}
+
+/* Tighten nav on tablets/phones */
+@media (max-width: 768px){
+ nav ul li { padding: 8px; }
+ nav ul li a { font-size: 15px; padding: 10px 12px; }
+}
+
+/* =========================================================
+  INTRO / HERO
+  ========================================================= */
+#introduction{
+ background: rgb(108,124,135);
+ color: #fff;
+ min-height: 100vh; /* fills viewport height */
+ display: flex; /* center content horizontally & vertically */
+ flex-direction: column;
+ align-items: center;
+ justify-content: center;
+ text-align: center;
+ padding: 0 1rem; /* side padding so text doesn't touch edges */
+}
+
+#fada{
+ text-transform: capitalize; letter-spacing: 2px;
+ font-size: clamp(36px, 6vw, 80px);
+ font-family: 'Noto Serif JP', serif;
+}
+
+#architects{
+ text-transform: lowercase;
+ letter-spacing: clamp(2px, .5vw, 7px);
+ font-size: clamp(22px, 3.5vw, 50px);
 }
 
 #header-img {
-  margin: 0;
-  float: left;
+   margin: 0; float: left; 
 }
 
-#title {
+/* Sizes (unchanged, but grouped for clarity) */
+h1 { font-size: clamp(28px, 3.6vw, 56px); }
+h2 { font-size: clamp(22px, 2.6vw, 36px); }
+h3 { font-size: clamp(18px, 2vw, 28px); margin: clamp(20px, 3.5vw, 40px) 0 0; }
+
+
+/* --- FADA line-drawing hero --- */
+#intro {
+  display: grid; place-items: center; gap: clamp(10px, 2.5vw, 18px); 
+}
+
+#fada { width: 100%; display: grid; place-items: center; }
+.fada-svg { width: min(900px, 92vw); height: auto; display: block; }
+
+.fada-svg path{
+ fill: none;
+ stroke: #ffffff;
+ stroke-width: 10;                /* adjust to taste */
+ stroke-linecap: square;
+ stroke-linejoin: miter;
+ vector-effect: non-scaling-stroke; /* crisp at all sizes */
+ stroke-dasharray: var(--len, 1000);
+ stroke-dashoffset: var(--len, 1000);
+}
+
+/* subtle glow while drawing */
+.fada-svg .js-draw.is-animating{
+ filter: drop-shadow(0 0 10px rgba(255,255,255,.18));
+}
+
+/* animation */
+@keyframes draw-stroke {
+ to { stroke-dashoffset: 0; }
+}
+/* JS adds .animate and a staggered delay */
+.fada-svg .js-draw.animate {
+ animation: draw-stroke var(--draw-duration, 1100ms) cubic-bezier(.22,.8,.2,1) forwards;
+}
+
+/* Subtitle style (you already have #architects, keep your existing fonts) */
+#architects{
+ letter-spacing: clamp(2px, .5vw, 7px);
+ opacity: 0;                      /* we’ll fade it in after drawing */
+ transition: opacity .5s ease .1s, transform .5s ease .1s;
+ transform: translateY(6px);
+}
+#architects.reveal{
+ opacity: 1;
+ transform: translateY(0);
+}
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce){
+ .fada-svg path{
+   stroke-dasharray: none; stroke-dashoffset: 0; animation: none !important;
+ }
+ #architects{ opacity: 1; transform: none; transition: none; }
+}
+
+/* SECTION TITLE */
+.section_title{
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;               
   color: #58656E;
-  text-align: center;
-  font-family: "Noto Serif JP", serif;
-  margin: 50px 390px 0px;
-  padding: 50px 10px 0px;
-  letter-spacing: 2px;
-}
-
-/* PROJECTS */
-
-#projects-container {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 50px;
-  padding: 100px 100px 4px 0px;
-  margin: 0px 0px 100px 0px;
-  overflow: auto;
-  max-width: 1200px;
-}
-
-#images {
-  width: 40%;
-}
-
-/* SERVICES*/
-#services_container {
-  padding: 5px 220px 100px;
-  margin: 0px 0px;
-  text-align: center;
-}
-
-/* TEAM */
-#team {
-  padding: 60px 0px 110px;
-  margin-bottom: 100px;
-}
-
-.team-container {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 75px;
-  margin: 0px 120px;
-  padding: 110px 100px 5px;
-}
-
-#team_img {
-  border-radius: 50%;
-  width: 150px;
-  height: 150px;
-}
-
-.teamname-container {
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 187px;
-  margin: 0px 100px;
-  padding: 0px 160px;
-  font-weight: bold;
-  font-family: 'Noto Serif JP', serif; 
-}
-
-.teamtitle-container { 
-  display: flex;
-  flex-flow: row nowrap;
-  gap: 160px;
-  padding: 0px 80px;
-  margin: 0px 137px;
-  font-family: 'Josefin Sans', sans-serif;
-}
-
-#contact-form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  max-width: 600px;
-  margin: 0px 300px 50px 300px;
-  padding: 10px 120px;
-}
-
-input[type="text"], [type="email"] {
-  color: #394247;
-  width: 100%; 
-  box-sizing: border-box; 
   letter-spacing: 1px;
+  line-height: 1.2;
+  margin: clamp(32px, 7vw, 64px) 0 clamp(12px, 2vw, 20px);
+  padding-inline: var(--edge);  /* default page-edge alignment */
+  max-width: var(--measure);
 }
 
-#nameform {
-  order: 1;
-  width: 45%;
+/* Titles inside cards align to the card’s inner edge by default */
+.overlap-card .section_title{
+  padding-inline: 0;                     
+  margin-inline: 0;
 }
 
-#emailform {
-  order: 2;
-  width: 52.2%;
+#services .overlap-card > .section_title,
+#contact  .overlap-card > .section_title { 
+  padding-left: var(--edge); 
 }
 
-#subjectform {
-  order: 3;
-  width: 100%;
-} 
-
-#messageform {
-  order: 4;
-  max-width: 100%;
-  height: 150px;
-} 
-
-#subjectform {
-  width: 438px;
-}
-
-textarea {
-  height: 150px;
-  box-sizing: border-box;
-  width: 438px;
-  resize: none;
-}
-
-.input-field {
-  border: 1px solid  #394247; 
-  padding: 7px 14px 9px; 
-  transition: 0.4s;
-  border-radius: 2px;
-}
-
-:focus {
-  outline: none;
-}
-
-/*  inputfield Animation */
-.inputfield-animation {
-  position: relative;
-}
-
-.input-field ~ .focus-border:before,
-.input-field ~ .focus-border:after {
-  content: ""; 
-  position: absolute; 
-  top: 0; 
-  left: 50%; 
-  width: 0; 
-  height: 2px; 
-  background-color: #A9C3D4;
-  transition: 0.4s;
-}
-
-.input-field ~ .focus-border:after {
-  top: auto; 
-  bottom: 0;
-}
-
-.input-field ~ .focus-border i:before,
-.input-field ~ .focus-border i:after {
-  content: ""; 
-  position: absolute; 
-  top: 50%; 
-  left: 0; 
-  width: 2px; 
-  height: 0; 
-  background-color: #A9C3D4; 
-  transition: 0.6s;
-}
-
-.input-field ~ .focus-border i:after {
-  left: auto; 
-  right: 0;
-}
-
-.input-field:focus ~ .focus-border:before,
-.input-field:focus ~ .focus-border:after {
-  left: 0; 
-  width: 100%; 
-  transition: 0.4s;
-}
-
-.input-field:focus ~ .focus-border i:before,
-.input-field:focus ~ .focus-border i:after {
-  top: 0; 
-  height: 100%; 
-  transition: 0.6s;
-}
-
-#submit-btn {
-  order: 5;
-  width: 100%;
-  padding: 10px;
-  color: rgb(233, 233, 233);
-  background-color: #58656E;
-  border: none;
-  border-radius: 2px;
-  margin: 2px;  
-  text-align: center;
-  font-size: medium;
+/* Keep semantic headings light unless promoted via .section_title */
+h1, h2, h3{
   font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  line-height: 1.15;
 }
 
-#submit-btn:hover {
-  filter:brightness(120%);
+/* =========================================================
+  PROJECTS — horizontal scroll cards
+  ========================================================= */
+.projects-scroll-container{
+ /* height scales with viewport */
+ height: clamp(320px, 70vh, 720px);
+ width: 100%;
+
+ /* horizontal scroll */
+ overflow-x: auto;
+ overflow-y: hidden;
+ -webkit-overflow-scrolling: touch;
+
+ /* snap behavior */
+ scroll-snap-type: x mandatory;
+
+ /* responsive “gutters” to let first/last card fully enter */
+ --edge: clamp(12px, 6vw, 56px);
+ padding-inline: var(--edge);
+ scroll-padding-inline: var(--edge);
+
+ /* avoid page scroll stealing gestures */
+ overscroll-behavior-inline: contain;
 }
 
-/* FOOTER */
-footer {
-  background-color: rgb(108, 124, 135);
-  color: rgb(233, 233, 233);
-  padding: 30px 70px 200px;
-  margin: 190px 0px 0px;
+.projects-scroll-wrapper{
+ display: flex;
+ align-items: center;
+ height: 100%;
+ width: max-content;
+ gap: clamp(8px, 2.5vw, 20px);
+}
+/* make sure the very first and last card can snap fully in view */
+.projects-scroll-wrapper::before,
+.projects-scroll-wrapper::after{
+ content: "";
+ flex: 0 0 var(--edge);
+}
+
+.project-card{
+ flex: 0 0 clamp(80vw, 48vw, 560px); /* phones ~82–90vw, tablets/desktops ~48vw */
+ height: 100%;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ background: #f0f0f0;
+ border-radius: 20px;
+
+ /* snap each card to the left edge of the padded viewport */
+ scroll-snap-align: start;
+
+ scroll-snap-stop: always; /* <— prevents skipping on momentum scroll */
+
+ /* remove right margin; gap handles spacing */
+ margin: 0;
+}
+
+.project-card img{
+ max-width: 100%;
+ max-height: 100%;
+ object-fit: contain;
+ display: block;
+ border-radius: 20px;
+}
+.project-card:hover .project-img{
+ transform: scale(1.05) translateY(-5px);
+}
+
+/* ------------------------- */
+/* SERVICES */
+/* ------------------------- */
+#services {
+ overflow: visible !important;
+}
+
+#services.overlap-panel {
+ --overlap-tail: 28vh;  
+}
+
+#services .overlap-card {
+ padding-bottom: clamp(28px, 4vw, 48px);
+ overflow: visible;
+ color:#58656E;
+}
+
+#services_container{
+  padding: 0 var(--edge);
+}
+
+#services_container > h3 {
+ margin: 0 0 .35rem;
+ padding-top: 10px;
+ padding-bottom: 10px;
+}
+
+#services_container > p {
+ margin: 0 0 1rem;
+ font-size: 16px;
+ padding-bottom: 10px;
+ letter-spacing: 0.2px;
+ color:#58656E;
+}
+
+/* =========================================================
+  TEAM (now grid & fluid paddings)
+  ========================================================= */
+/* ===== TEAM — neat columns, each person stacked img → name → title ===== */
+#team{
+ background-color: #f0f0f0;
+ display: grid;
+ align-items: start;
+ margin: 0;
+}
+
+/* 3D tilt + soft glow on avatar hover (pointer-aware) effect below this line */
+/* Perspective context */
+#team {
+ perspective: 1000px;
+}
+
+/* Base */
+#team .team_img{
+ transition: transform .18s ease, box-shadow .25s ease, filter .25s ease;
+ box-shadow: 0 10px 24px rgba(0,0,0,.06);
+}
+
+/* Hover state (fallback if JS not active) */
+#team .team_img:hover{
+ filter: saturate(1.09);
+ box-shadow: 0 16px 40px rgba(0,0,0,.12), 0 0 0 6px rgba(169,195,212,.15);
+}
+
+@media (prefers-reduced-motion: reduce){
+ #team .team_img{
+ box-shadow: .2s ease;
+ }
+}
+/*  3D tilt + soft glow on avatar hover (pointer-aware) effect, above this line  */
+
+/* =========================================================
+  CONTACT 
+  ========================================================= */
+#contact{
+ background: #f0f0f0;
+ padding-top: 0;
+ border-top: 1px solid transparent; /* anti margin-collapse */
+ margin-top: 0;
+}
+
+#contact .overlap-card > .section_title { 
+  padding-left: var(--edge); 
+}
+
+#contact > *:first-child{ 
+  margin-top: 0 !important; 
+}
+
+#contact .contact-container{
+ max-width: min(1000px, 94vw);
+ margin: 0 auto;
+ padding: 0 var(--edge) clamp(80px, 10vw, 150px);
+ display: block;
+}
+
+/* ------------------ Contact Form ------------------ */
+#contact-form{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+
+  /* width & alignment */
+  max-width: min(600px, 96vw);
+  margin: 0;                 /* no auto-centering */
+  padding: 0;                /* remove inner horizontal padding */
+}
+
+@media (min-width: 680px){
+ #contact-form{ grid-template-columns: 1fr 1fr; gap: clamp(10px, 2vw, 16px); }
+ #nameform{ grid-column: 1 / 2; }
+ #emailform{ grid-column: 2 / 3; }
+ #subjectform, #messageform, #contact-form #submit-btn{ grid-column: 1 / -1; }
+}
+
+/* Field wrapper tokens */
+#contact-form .inputfield-animation{
+ position: relative; flex: 1 1 100%;
+ --border-radius: 8px;
+ --focus-accent: var(--input-highlight-strong);
+ --label-gap: clamp(6px, 1vw, 8px);
+ --label-pad-x: 0.4rem;
+ --label-pad-y: 0.06rem;
+ --label-bg: #fff;
+ --label-float-size: clamp(.76rem, 1.6vw, .82rem);
+
+ /* whole-border trace on focus (robust) */
+ --trace-color: var(--input-highlight);
+ --trace-thickness: 2px;
+ --radius: 8px;
+}
+
+#contact-form .inputfield-animation::after{
+ content:""; position:absolute; inset:0; border-radius: var(--radius);
+ pointer-events:none; z-index:1;
+ background:
+   linear-gradient(var(--trace-color) 0 0) top left    / 0 var(--trace-thickness)   no-repeat,
+   linear-gradient(var(--trace-color) 0 0) top right   / var(--trace-thickness) 0   no-repeat,
+   linear-gradient(var(--trace-color) 0 0) bottom right/ 0 var(--trace-thickness)   no-repeat,
+   linear-gradient(var(--trace-color) 0 0) bottom left / var(--trace-thickness) 0   no-repeat;
+ opacity:0; transition: opacity .15s ease;
+}
+
+#contact-form .inputfield-animation:focus-within::after{
+ opacity:1; animation: border-trace 600ms cubic-bezier(.2,.8,.2,1) forwards;
+}
+
+@keyframes border-trace{
+ 0%   { background-size: 0 var(--trace-thickness), var(--trace-thickness) 0, 0 var(--trace-thickness), var(--trace-thickness) 0; }
+ 25%  { background-size: 100% var(--trace-thickness), var(--trace-thickness) 0, 0 var(--trace-thickness), var(--trace-thickness) 0; }
+ 50%  { background-size: 100% var(--trace-thickness), var(--trace-thickness) 100%, 0 var(--trace-thickness), var(--trace-thickness) 0; }
+ 75%  { background-size: 100% var(--trace-thickness), var(--trace-thickness) 100%, 100% var(--trace-thickness), var(--trace-thickness) 0; }
+ 100% { background-size: 100% var(--trace-thickness), var(--trace-thickness) 100%, 100% var(--trace-thickness), var(--trace-thickness) 100%; }
+}
+
+@media (prefers-reduced-motion: reduce){
+ #contact-form .inputfield-animation:focus-within::after{
+   animation: none; opacity: 1;
+   background:
+     linear-gradient(var(--trace-color) 0 0) top left    / 100% var(--trace-thickness) no-repeat,
+     linear-gradient(var(--trace-color) 0 0) top right   / var(--trace-thickness) 100% no-repeat,
+     linear-gradient(var(--trace-color) 0 0) bottom right/ 100% var(--trace-thickness) no-repeat,
+     linear-gradient(var(--trace-color) 0 0) bottom left / var(--trace-thickness) 100% no-repeat;
+ }
+}
+
+/* Inputs */
+#contact-form .input-field{
+ width: 100%; box-sizing: border-box;
+ padding: clamp(12px, 1.2vw, 16px) clamp(14px, 1.5vw, 16px);
+ border: 1px solid transparent;
+ border-radius: var(--border-radius);
+ background: #fff; outline: none;
+ transition: border-color .22s ease, box-shadow .22s ease, background-color .22s ease;
+}
+
+#contact-form .inputfield-animation:hover .input-field{
+ border-color: var(--input-highlight);
+ box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+
+#contact-form .inputfield-animation:hover label{ color: var(--input-highlight); }
+#contact-form .input-field:focus{
+ border-color: var(--input-highlight-strong);
+ box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+
+/* Floating labels */
+#contact-form .input-field::placeholder{ color: transparent; }
+#contact-form .inputfield-animation label{
+ position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+ font-size: 1rem; color: #394247; pointer-events: none;
+ background: transparent; padding: 0; border-radius: 4px; z-index: 2;
+ transition: top .2s ease, transform .2s ease, font-size .2s ease, color .2s ease, background-color .2s ease, padding .2s ease;
+}
+
+#contact-form .input-field:focus + label,
+#contact-form .input-field:not(:placeholder-shown) + label,
+#contact-form textarea.input-field:focus + label,
+#contact-form textarea.input-field:not(:placeholder-shown) + label{
+ top: 20px; transform: translateY(calc(-100% - var(--label-gap)));
+ font-size: var(--label-float-size);
+ color: var(--input-highlight);
+ background: var(--label-bg);
+ padding: var(--label-pad-y) var(--label-pad-x);
+}
+
+#contact-form .input-field:focus + label{ color: var(--input-highlight-strong); }
+
+/* Textarea follow width */
+#contact-form textarea.input-field{
+ width: 100% !important; height: 150px; resize: none; box-sizing: border-box;
+}
+
+/* Validation shake on error */
+@keyframes shake{
+ 0%{ transform: translateX(0); } 20%{ transform: translateX(-4px); }
+ 40%{ transform: translateX(4px); } 60%{ transform: translateX(-2px); }
+ 80%{ transform: translateX(2px); } 100%{ transform: translateX(0); }
+}
+#contact-form .inputfield-animation.error .input-field{ border-color: #e74c3c; animation: shake .5s ease; }
+#contact-form .inputfield-animation.error label{ color: #e74c3c; }
+
+/* Submit button */
+#contact-form #submit-btn{
+ grid-column: 1 / -1;
+ color: #e9e9e9; background: #58656E; width: 100%;
+ padding: clamp(.6rem, 1.5vw, .75rem) clamp(1.2rem, 2.4vw, 1.8rem);
+ font-size: clamp(.95rem, 1.8vw, 1rem);
+ font-weight: 500; border: none; border-radius: 50px; cursor: pointer;
+ outline: none; position: relative; overflow: hidden;
+ transition: background-color .3s ease, transform .2s ease, box-shadow .2s ease;
+}
+
+#contact-form #submit-btn::after{
+ content:""; position:absolute; top:50%; left:50%; width:0; height:0;
+ background: rgba(255,255,255,.3); border-radius:50%;
+ transform: translate(-50%,-50%); transition: width .4s ease, height .4s ease, opacity .4s ease;
+ pointer-events:none;
+}
+
+#contact-form #submit-btn:hover{ background: var(--input-highlight); transform: translateY(-3px); box-shadow: 0 8px 20px rgba(0,0,0,.08); }
+#contact-form #submit-btn:hover::after{ width:300%; height:300%; opacity:0; }
+#contact-form #submit-btn:active{ transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.06); }
+
+/* =========================================================
+  FOOTER
+  ========================================================= */
+footer{
+ background: rgb(108,124,135);
+ color: #e9e9e9;
+ padding: clamp(24px, 5vw, 40px) clamp(24px, 6vw, 70px) clamp(120px, 16vw, 200px);
+ margin-top: auto; position: static; width: 100%;
+ font-family: 'Josefin Sans', sans-serif;
+}
+
+#contactfooter{ 
+  float: left; 
+}
+
+#rightfooter{ 
+  float: right; 
+}
+
+footer ul{ 
+  list-style: none; 
+  padding: 0; 
+  margin: 0; 
+}
+
+footer li{ 
+  display: inline; 
+}
+
+footer p{ 
+  color: #e9e9e9; 
+}
+
+/* =========================================================
+  CUSTOM CURSOR (dot + lens)
+  ========================================================= */
+@media (hover:hover) and (pointer:fine){ html, body { cursor:none; } }
+.cursor{
+ position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+}
+.cursor__dot{
+ position:absolute; top:0; left:0;
+ width:var(--cursor-size); height:var(--cursor-size);
+ background: rgba(var(--cursor-color),1); border-radius:50%;
+ transform: translate(-50%,-50%); will-change: transform, width, height, background-color, opacity;
+ transition: width .15s ease, height .15s ease, background-color .2s ease, opacity .15s ease;
+}
+.cursor--hover .cursor__dot{ width:var(--cursor-hover-size); height:var(--cursor-hover-size); }
+.cursor--down  .cursor__dot{ transform: translate(-50%,-50%) scale(var(--cursor-click-scale)); }
+.cursor--hidden .cursor__dot{ opacity:0; }
+.cursor__lens{
+ position:absolute; top:0; left:0;
+ width:var(--lens-size); height:var(--lens-size);
+ transform: translate(-50%,-50%) scale(.85);
+ border-radius:50%; overflow:hidden; background-repeat:no-repeat;
+ background-position:center; background-size: 0 0;
+ opacity:0; will-change: transform, opacity, background-position, background-size;
+ transition: transform .18s ease, opacity .12s ease;
+}
+.cursor__ring{
+ position:absolute; inset:0; border-radius:50%;
+ border: var(--ring-width) solid rgba(var(--cursor-color), 1);
+}
+.cursor--image .cursor__lens{ opacity:1; transform: translate(-50%,-50%) scale(1); }
+.cursor--image .cursor__dot{ opacity:0; }
+@media (prefers-reduced-motion:reduce){ .cursor__dot, .cursor__lens{ transition:none; } }
+
+/* =========================================================
+  RESPONSIVE TWEAKS
+  ========================================================= */
+/* ----- Optional fine-tuning by breakpoint ----- */
+@media (max-width: 600px){
+ .projects-scroll-container{
+   --edge: clamp(12px, 7vw, 36px);
+ }
+ .projects-scroll-wrapper{
+   gap: clamp(8px, 3vw, 16px);
+ }
+ .project-card{
+   flex-basis: clamp(88vw, 92vw, 96vw);
+ } /* almost full-bleed on small phones */
+}
+
+@media (min-width: 992px){
+ .projects-scroll-container{
+   --edge: clamp(24px, 4vw, 64px);
+ }
+ .project-card{
+   flex-basis: clamp(420px, 42vw, 560px);
+ } /* two-ish cards in view on big screens */
+}
+
+/* ================================
+  TEAM — responsive grid & safety
+  ================================ */
+/* Make the overlap card behave like a normal container (not a grid),
+  since the JS builds .team-grid inside it. */
+#team .overlap-card {
+ display: block;
+ overflow: visible;
+ padding-bottom: clamp(28px, 8vh, 72px); /* space so last member isn't under the nav */
+}
+
+/* When JS inserts .team-grid, hide the old wrappers to avoid double content */
+#team .team-grid ~ .team-container,
+#team .team-grid ~ .teamname-container,
+#team .team-grid ~ .teamtitle-container {
+ display: none !important;
+}
+
+/* The grid the JS assembles */
+#team .team-grid{
+ display: grid;
+ grid-template-columns: repeat(4, minmax(160px, 1fr));
+ gap: clamp(16px, 3vw, 28px) clamp(20px, 4vw, 40px);
+ justify-items: center;
+ align-items: start;
+ margin-top: clamp(12px, 2vw, 20px);
+}
+
+#team .team-member{
+ text-align: center;
+}
+
+#team .team-member img{
+ width: clamp(96px, 12vw, 150px);
+ height: clamp(96px, 12vw, 150px);
+ border-radius: 24%;
+ object-fit: cover;
+ display: block;
+ margin-inline: auto;
+}
+
+#team .team-member .team-name{
+  margin: .5rem 0 .15rem;
   font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;                /* light but a touch stronger than body */
+  font-size: clamp(16px, 1.6vw, 20px);
+  letter-spacing: 0.5px;           /* optional, keeps geometric feel */
+  color: #394247;                  /* matches body text color */      
+
 }
 
-#contactfooter {
-  float: left;
+#team .team-member .team-title{
+  margin: 0;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;                /* lighter, so role looks secondary */
+  font-size: clamp(13px, 1.2vw, 16px);
+  letter-spacing: 0.3px;
+  opacity: 0.85;                   /* softer contrast */
+  color: #58656E;                  /* slight tonal variation for hierarchy */
 }
 
-#rightfooter {
-  float: right;
+/* 2 columns (tablets) */
+@media (max-width: 1024px){
+ #team .team-grid{ 
+  grid-template-columns: repeat(2, minmax(160px, 1fr)); 
+}
+ #team.overlap-panel { 
+  --overlap-tail: 32vh; 
+}
 }
 
-footer ul {
-  list-style-type: none;
+/* 2 column (phones) */
+@media (max-width: 640px){
+ /* extra breathing room inside the card */
+ #team .overlap-card {
+   padding-bottom: clamp(56px, 26vh, 40px);  /* was ~28–72px; make it generous */
+ }
 }
 
-footer li {
-  display: inline;
-  text-align: center;
+/* Global: make the browser stop scrolling when content is still under the fixed nav */
+html {
+ scroll-padding-bottom: calc(env(safe-area-inset-bottom, 0px) + 80px);
 }
 
-footer p {
-  color: rgb(233, 233, 233);
+/* Ensure the team panel participates well in the overlap stack */
+#team.overlap-panel {
+ --overlap-tail: 28vh;
 }
 
-/* MEDIA QUERIES */
-/* iPhone  */
-@media all and (max-width: 376px) and (max-width: 812px) {
-  nav ul {
-    padding: 5px;
-  }
-
-  nav ul li {
-    display: inline-block;
-    padding: 5px;
-  }
-  
-  nav ul li a {
-    padding: 0px;
-  }
-
-  nav a:hover {
-    padding: 5px 16px;
-  }
-  
-  nav.light ul {
-    padding: 0px;
-  }
-
-  nav.light ul li a {
-    padding: 0px;
-  }
-
-  nav.light a:hover {
-    padding: 5px 16px;
-  }
-
-  #introduction {
-    height: 20vh;
-    margin: 0px;
-    padding: 100px 0px;
-  }
-
-  #images{
-    height: auto;
-  }
-
-  #projects-container {
-    background-color: rgb(108, 124, 135); 
-    max-width: 376px;
-    gap: 15px;
-    margin: 5px 0px 0px;
-    max-width: 376px;
-    margin: 0px 0px;
-    padding: 101px 40px 230px;
-  }
-
-  #title {
-    margin: 80px 30px 0px;
-    padding: 0px 10px;
-    letter-spacing: 2px;
-  }
-
-  #services_container {
-    padding: 0px 40px;
-    margin: 50px 0px;
-  }
-
-  #team {
-    padding: 0px;
-    margin-bottom: 50px;
-  }
-
-  .team-container {
-    gap: 20px;
-    margin: 0px 5px;
-    padding: 40px 10px 0px;
-  }
-
-  #team_img {
-    width: 70px;
-    height: 70px;
-  }
-
-  .teamname-container {
-    gap: 55px;
-    margin: 0px 15px;
-    padding: 0px;
-  }
-
-  .teamtitle-container {
-    gap: 30px;
-    padding: 0px 0px;
-    margin: 0px 20px;
-  }
-
-  #contact-form {
-    gap: 5px;
-    max-width: 600px;
-    margin: 5px 30px 80px;
-    padding: 10px 30px;
-  }
-
-  #subjectform {
-    width: 253px;
-  }
-
-  textarea {
-    width: 252.5px;
-  }
-
-  footer {
-    padding: 30px 70px 250px;
-    margin: 20px 0px;
-  }
+#team {
+ overflow: visible;
 }
 
-/* iPad in portrait & landscape */
-@media only screen 
-and (min-device-width : 768px) 
-and (max-device-width : 1024px)  { 
-  nav ul {
-    padding: 5px;
-  }
+/* Containers with side gutters */
+#services_container,
+.team-container,
+.contact-container {
+  padding-inline: var(--edge);
+}
 
-  nav ul li {
-    display: inline-block;
-    padding: 5px;
-  }
-  
-  nav ul li a {
-    padding: 0px;
-  }
-
-  nav a:hover {
-    padding: 5px 16px;
-  }
-  
-  nav.light ul {
-    padding: 0px;
-  }
-
-  nav.light ul li a {
-    padding: 0px;
-  }
-
-  nav.light a:hover {
-    padding: 5px 16px;
-  }
-
-  #introduction {
-    height: 20vh;
-    margin: 0px;
-    padding: 110px 0px;
-  }
-
-  #projects-container {
-    background-color: rgb(108, 124, 135); 
-    max-width: 376px;
-    margin: 5px 0px 0px;
-    max-width: 768px;
-    margin: 0px 0px;
-    padding: 115px 40px 210px;
-  }
-
-  #images{
-    height: auto;
-  }
-
-  #title {
-    margin: 170px 30px 0px;
-    padding: 0px 10px;
-    letter-spacing: 2px;
-  }
-
-  #services_container {
-    padding: 0px 100px 50px;
-    margin: 50px 0px;
-  }
-
-  #team {
-    padding: 0px;
-    margin-bottom: 50px;
-  }
-
-  .team-container {
-    gap: 55px;
-    margin: 0px 20px;
-    padding: 40px 42px 0px;
-  }
-
-  #team_img {
-    width: 120px;
-    height: 120px;
-  }
-
-  .teamname-container {
-    gap: 138px;
-    margin: 0px 20px;
-    padding: 5px 70px 0px;
-  }
-
-  .teamtitle-container {
-    gap: 100px;
-    margin: 0px 20px;
-    padding: 5px 30px 0px;
-  }
-
-  #contact-form {
-    gap: 5px;
-    max-width: 550px;
-    margin: 5px 50px 80px;
-    padding: 10px 90px;
-  }
-
-  #emailform {
-    width: 261px;
-  }
-
-  #subjectform {
-    width: 486px;
-  }
-
-  textarea {
-    width: 486px;
-  }
-
-  footer {
-    padding: 30px 70px 250px;
-    margin: 20px 0px;
-  }
+/* One rule to align all section titles with their content */
+.overlap-card > .section_title {
+  max-width: min(1100px, 92vw);   /* use 1000px/94vw for Contact if you prefer */
+  margin-left: auto;
+  margin-right: auto;
+  padding-inline: var(--edge);
+  text-align: left;
 }
